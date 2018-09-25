@@ -11,15 +11,33 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+
 import messages from './messages';
+import Section from './styled-components/Section';
+import Form from './styled-components/Form';
+import Label from './styled-components/Label';
+import Input from './styled-components/Input';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   render() {
+    const { title, input } = messages;
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <Section>
+        <h3>
+          <FormattedMessage {...title} />
+        </h3>
+        <Form>
+          <Label for="quote">
+            <FormattedMessage {...input} />
+            <Input
+              type="text"
+              name="input_quote"
+              placeholder="Type Quote Here..."
+            />
+          </Label>
+        </Form>
+      </Section>
     );
   }
 }
