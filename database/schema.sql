@@ -5,7 +5,7 @@ CREATE DATABASE inspire;
 USE inspire;
 
 CREATE TABLE quotes (
-  id INT NOT NULL SERIAL,
+  id SERIAL,
   quote VARCHAR(255),
   PRIMARY KEY(id)
 );

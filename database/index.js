@@ -19,7 +19,7 @@ const getQuotes = cb => {
 };
 
 const saveQuote = (params, cb) => {
-  const values = [params.quote];
+  const values = [params];
   const query = `insert into quotes (quote) values ($1) returning *`;
   pool
     .query(query, values)

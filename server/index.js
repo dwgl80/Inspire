@@ -20,14 +20,18 @@ const app = express();
 // app.use('/api', myApi);
 app.use(bodyParser.json());
 
-app.post('/saved/quotes', (res, req) => {
-  console.log(req.body);
-  res.send();
+app.post('/saved/quotes', (req, res) => {
+  const data = req.body.quote;
+  saveQuote(data, (err, result) => {
+    if (err) console.log(err);
+    console.log(result);
+    res.send();
+  });
 });
 
-app.get('/saved/quotes', (res, req) => {
+app.get('/saved/quotes/', (req, res) => {
   console.log('hello from get request');
-  res.send();
+  res.status(200).send('hello');
 });
 
 // In production we need to pass these values in instead of relying on webpack

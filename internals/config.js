@@ -30,6 +30,7 @@ const ReactBoilerplate = {
         'sanitize.css',
         'pg',
         'body-parser',
+        'axios',
       ],
 
       /**
