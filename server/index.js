@@ -3,6 +3,7 @@
 const express = require('express');
 const logger = require('./logger');
 const bodyParser = require('body-parser');
+const { getQuotes, saveQuote } = require('../database/index.js');
 
 const argv = require('./argv');
 const port = require('./port');
@@ -19,8 +20,13 @@ const app = express();
 // app.use('/api', myApi);
 app.use(bodyParser.json());
 
-app.get('/saved/quotes', (res, req) => {
+app.post('/saved/quotes', (res, req) => {
   console.log(req.body);
+  res.send();
+});
+
+app.get('/saved/quotes', (res, req) => {
+  console.log('hello from get request');
   res.send();
 });
 
