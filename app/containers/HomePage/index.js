@@ -20,6 +20,9 @@ import Input from './styled-components/Input';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
+  componentDidMount() {
+    console.log('hi');
+  }
   render() {
     const { title, input } = messages;
     return (

@@ -19,17 +19,14 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import Header from 'components/Header';
 
-const App = () => {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route component={NotFoundPage} />
+    </Switch>
+  </div>
+);
 
 export default App;
-

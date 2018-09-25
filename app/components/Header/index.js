@@ -16,8 +16,7 @@ const Header = () => {
         <FormattedMessage {...title} />
       </H2>
     </div>
-  )
+  );
 };
 
 export default Header;
-

@@ -12,6 +12,6 @@ export default defineMessages({
   },
   input: {
     id: 'HomePage.input',
-    defaultMessage: 'Compose: '
+    defaultMessage: 'Compose: ',
   },
 });
