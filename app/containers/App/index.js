@@ -24,7 +24,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route component={NotFoundPage} />
+      <Route path="/error" component={NotFoundPage} />
     </Switch>
   </div>
 );

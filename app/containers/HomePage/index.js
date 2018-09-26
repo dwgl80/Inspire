@@ -11,7 +11,6 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import 'whatwg-fetch';
 import axios from 'axios';
 
 import messages from './messages';
@@ -20,28 +19,24 @@ import Form from './styled-components/Form';
 import Label from './styled-components/Label';
 import Input from './styled-components/Input';
 
-const options = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    name: 'Hubot',
-    login: 'hubot',
-  }),
-};
+import { inputQuote } from './actions.js';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
   componentDidMount() {
-    console.log('hi');
-    // fetch('/saved/quotes', options)
-    //   .then(res => console.log('response sent to client', res))
-    //   .catch(err => console.log('error in client', err));
     axios
-      .post('/saved/quotes/', { quote: 'shoot for the moon and the stars' })
+      .get('/saved/quotes/')
       .then(res => console.log('response from client', res))
       .catch(err => console.log('error in client', err));
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    event.target.reset();
   }
 
   render() {
@@ -51,13 +46,18 @@ export default class HomePage extends React.PureComponent {
         <h3>
           <FormattedMessage {...title} />
         </h3>
-        <Form>
+        <Form
+          action="/saved/quotes"
+          method="post"
+          onSubmit={this.handleFormSubmit}
+        >
           <Label for="quote">
             <FormattedMessage {...input} />
             <Input
               type="text"
-              name="input_quote"
+              name="quote"
               placeholder="Type Quote Here..."
+              onChange={this.onInputChange}
             />
           </Label>
         </Form>
@@ -65,3 +65,12 @@ export default class HomePage extends React.PureComponent {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  handleFormSubmit: event => {
+    event.preventDefault();
+    event.target.reset();
+    dispatch();
+  },
+  onInputChange: event => dispatch(inputQuote(event.target.value)),
+});

@@ -18,20 +18,23 @@ const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/saved/quotes', (req, res) => {
+  console.log('hello from post');
   const data = req.body.quote;
-  saveQuote(data, (err, result) => {
+  saveQuote(data, (result, err) => {
     if (err) console.log(err);
-    console.log(result);
-    res.send();
+    res.status(201).send(result);
   });
 });
 
 app.get('/saved/quotes/', (req, res) => {
-  console.log('hello from get request');
-  res.status(200).send('hello');
+  getQuotes((result, err) => {
+    if (err) console.log(err);
+    const data = result.rows.map(item => item.quote);
+    res.status(200).send(data);
+  });
 });
 
 // In production we need to pass these values in instead of relying on webpack
