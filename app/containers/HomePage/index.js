@@ -25,6 +25,7 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 
+import HomePageList from 'components/HomePageList';
 import messages from './messages';
 import Section from './styled-components/Section';
 import Form from './styled-components/Form';
@@ -38,10 +39,6 @@ import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    // this.handleFormSubmit = this.handleFormSubmit.bind(this);
-  }
   componentDidMount() {
     axios
       .get('/saved/quotes/')
@@ -49,13 +46,14 @@ export class HomePage extends React.PureComponent {
       .catch(err => console.log('error in client', err));
   }
 
-  // handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   event.target.reset();
-  // }
-
   render() {
-    const { handleFormSubmit, onInputChange } = this.props;
+    const {
+      handleFormSubmit,
+      onInputChange,
+      recentlySaved,
+      saving,
+    } = this.props;
+    console.log(recentlySaved);
     const { title, input } = messages;
     return (
       <Section>
@@ -72,6 +70,7 @@ export class HomePage extends React.PureComponent {
               onChange={onInputChange}
             />
           </Label>
+          <HomePageList quotes={recentlySaved} />
         </Form>
       </Section>
     );
@@ -81,7 +80,7 @@ export class HomePage extends React.PureComponent {
 HomePage.propTypes = {
   saving: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  recentlySaved: PropTypes.array,
+  recentlySaved: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   handleFormSubmit: PropTypes.func,
   onInputChange: PropTypes.func,
 };

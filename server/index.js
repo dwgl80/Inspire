@@ -21,7 +21,6 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/saved/quotes', (req, res) => {
-  console.log('hello from post');
   const data = req.body.quote;
   saveQuote(data, (result, err) => {
     if (err) console.log(err);
