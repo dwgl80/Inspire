@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectQuote = state => state.get('HomePage', initialState);
+const selectHome = state => state.get('HomePage', initialState);
 
-const makeSelectQuote = createSelector(selectQuote, homeState =>
+const makeSelectQuote = createSelector(selectHome, homeState =>
   homeState.get('quote'),
 );
 
-export { selectQuote, makeSelectQuote };
+export { selectHome, makeSelectQuote };

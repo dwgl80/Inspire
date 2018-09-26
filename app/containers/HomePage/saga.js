@@ -35,7 +35,7 @@ const postQuotes = (url, param) => axios.post(url, param);
 
 export function* saveQuotes() {
   const url = '/saved/quotes';
-  const quote = yield select(makeSelectQuote());
+  const quote = yield select(makeSelectQuote);
   const param = { quote };
   try {
     const response = yield call(postQuotes, url, param);

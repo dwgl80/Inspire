@@ -33,7 +33,7 @@ const appReducer = (state = initialState, action) => {
     case SAVE_QUOTE:
       return state.set('saving', true).set('error', false);
     case SAVE_QUOTE_SUCCESS: {
-      const recentQuotes = state.get('recentlySaved', state);
+      const recentQuotes = state.get('recentlySaved');
       return state
         .set('saving', false)
         .set('error', false)

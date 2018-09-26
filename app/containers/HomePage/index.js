@@ -40,7 +40,7 @@ import saga from './saga';
 export class HomePage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    // this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
   componentDidMount() {
     axios
@@ -49,30 +49,27 @@ export class HomePage extends React.PureComponent {
       .catch(err => console.log('error in client', err));
   }
 
-  handleFormSubmit(event) {
-    event.preventDefault();
-    event.target.reset();
-  }
+  // handleFormSubmit(event) {
+  //   event.preventDefault();
+  //   event.target.reset();
+  // }
 
   render() {
+    const { handleFormSubmit, onInputChange } = this.props;
     const { title, input } = messages;
     return (
       <Section>
         <h3>
           <FormattedMessage {...title} />
         </h3>
-        <Form
-          action="/saved/quotes"
-          method="post"
-          onSubmit={this.handleFormSubmit}
-        >
+        <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
           <Label for="quote">
             <FormattedMessage {...input} />
             <Input
               type="text"
               name="quote"
               placeholder="Type Quote Here..."
-              onChange={this.onInputChange}
+              onChange={onInputChange}
             />
           </Label>
         </Form>
@@ -85,7 +82,7 @@ HomePage.propTypes = {
   saving: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   recentlySaved: PropTypes.array,
-  handleSubmitForm: PropTypes.func,
+  handleFormSubmit: PropTypes.func,
   onInputChange: PropTypes.func,
 };
 
