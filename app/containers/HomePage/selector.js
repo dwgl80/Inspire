@@ -3,8 +3,8 @@ import { initialState } from './reducer';
 
 const selectQuote = state => state.get('HomePage', initialState);
 
-const quoteSelector = createSelector(selectQuote, homeState =>
-  homeState.get('quote', initialState),
+const makeSelectQuote = createSelector(selectQuote, homeState =>
+  homeState.get('quote'),
 );
 
-export { quoteSelector };
+export { selectQuote, makeSelectQuote };

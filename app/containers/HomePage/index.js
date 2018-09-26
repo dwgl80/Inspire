@@ -10,11 +10,20 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 import axios from 'axios';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
+import {
+  makeSelectSaving,
+  makeSelectRecentlySaved,
+  makeSelectError,
+} from 'containers/App/selectors';
 
 import messages from './messages';
 import Section from './styled-components/Section';
@@ -28,7 +37,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
+export class HomePage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -72,6 +81,14 @@ export default class HomePage extends React.PureComponent {
   }
 }
 
+HomePage.propTypes = {
+  saving: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  recentlySaved: PropTypes.array,
+  handleSubmitForm: PropTypes.func,
+  onInputChange: PropTypes.func,
+};
+
 const mapDispatchToProps = dispatch => ({
   handleFormSubmit: event => {
     event.preventDefault();
@@ -81,5 +98,22 @@ const mapDispatchToProps = dispatch => ({
   onInputChange: event => dispatch(inputQuote(event.target.value)),
 });
 
+const mapStateToProps = createStructuredSelector({
+  saving: makeSelectSaving(),
+  recentlySaved: makeSelectRecentlySaved(),
+  error: makeSelectError(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
 const withReducer = injectReducer({ key: 'HomePage', reducer });
 const withSaga = injectSaga({ key: 'HomePage', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(HomePage);

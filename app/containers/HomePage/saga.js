@@ -1,6 +1,6 @@
 import { takeEvery, takeLatest, call, put, select } from 'redux-saga/effects';
 import axios from 'axios';
-import { GET_QUOTES, SAVE_QUOTES } from '../App/constants';
+import { GET_QUOTES, SAVE_QUOTE } from '../App/constants';
 import {
   quotesRetrieved,
   quotesFailed,
@@ -8,34 +8,34 @@ import {
   saveFailed,
 } from '../App/actions';
 
-import { quoteSelector } from './selector';
+import { makeSelectQuote } from './selector';
 
-export function* allQuotes() {
-  yield takeLatest(GET_QUOTES, getAllQuotes);
-}
+// export function* allQuotes() {
+//   yield takeLatest(GET_QUOTES, getAllQuotes);
+// }
 
-const fetchQuotes = url => axios.get(url);
+// const fetchQuotes = url => axios.get(url);
 
-function* getAllQuotes() {
-  const url = '/saved/quotes';
-  try {
-    const response = yield call(fetchQuotes, url);
-    const quotes = response.data;
-    yield put(quotesRetrieved(quotes));
-  } catch (err) {
-    yield put(quotesFailed(err));
-  }
-}
+// function* getAllQuotes() {
+//   const url = '/saved/quotes';
+//   try {
+//     const response = yield call(fetchQuotes, url);
+//     const quotes = response.data;
+//     yield put(quotesRetrieved(quotes));
+//   } catch (err) {
+//     yield put(quotesFailed(err));
+//   }
+// }
 
-export function* saveAllQuotes() {
-  yield takeEvery(SAVE_QUOTES, saveQuotes);
+export default function* saveAllQuotes() {
+  yield takeEvery(SAVE_QUOTE, saveQuotes);
 }
 
 const postQuotes = (url, param) => axios.post(url, param);
 
-function* saveQuotes() {
+export function* saveQuotes() {
   const url = '/saved/quotes';
-  const quote = yield select(quoteSelector());
+  const quote = yield select(makeSelectQuote());
   const param = { quote };
   try {
     const response = yield call(postQuotes, url, param);
