@@ -13,13 +13,19 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import axios from 'axios';
 
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+
 import messages from './messages';
 import Section from './styled-components/Section';
 import Form from './styled-components/Form';
 import Label from './styled-components/Label';
 import Input from './styled-components/Input';
 
-import { inputQuote } from './actions.js';
+import { saveQuote } from 'containers/App/actions';
+import { inputQuote } from './actions';
+import reducer from './reducer';
+import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
@@ -70,7 +76,10 @@ const mapDispatchToProps = dispatch => ({
   handleFormSubmit: event => {
     event.preventDefault();
     event.target.reset();
-    dispatch();
+    dispatch(saveQuote());
   },
   onInputChange: event => dispatch(inputQuote(event.target.value)),
 });
+
+const withReducer = injectReducer({ key: 'HomePage', reducer });
+const withSaga = injectSaga({ key: 'HomePage', saga });
