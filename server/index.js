@@ -32,6 +32,9 @@ app.get('/saved/quotes/', (req, res) => {
   getQuotes((result, err) => {
     if (err) console.log(err);
     const data = result.rows;
+    for (const item of data) {
+      item.liked = false;
+    }
     res.status(200).send(data);
   });
 });

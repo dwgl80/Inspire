@@ -12,7 +12,7 @@ import Wrapper from './Wrapper';
 export const QuotesPageList = ({ quotes }) => (
   <Wrapper>
     {quotes.map(item => (
-      <Quote key={item.id} id={item.id} quote={item.quote} />
+      <Quote key={item.id} id={item.id} quote={item.quote} liked={item.liked} />
     ))}
   </Wrapper>
 );

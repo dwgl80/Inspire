@@ -7,6 +7,7 @@ const Item = styled.div`
   height: 100%;
   align-items: center;
   margin-left: 30px;
+  color: blue;
 `;
 
 export default Item;
