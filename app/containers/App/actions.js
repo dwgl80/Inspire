@@ -21,7 +21,7 @@ const saveFailed = error => ({
   error,
 });
 
-const getQuote = () => ({
+const getQuotes = () => ({
   type: GET_QUOTES,
 });
 
@@ -36,7 +36,7 @@ const quotesFailed = error => ({
 });
 
 export {
-  getQuote,
+  getQuotes,
   quotesRetrieved,
   quotesFailed,
   saveQuote,
