@@ -44,14 +44,14 @@ const appReducer = (state = initialState, action) => {
       return state.set('saving', false).set('error', action.error);
     case CHANGE_LIKED: {
       const quotes = state.get('quotes');
-      const copiedQuotes = quotes.slice();
+      const updatedQuotes = quotes.slice();
       const id = action.id;
       for (const item of copiedQuotes) {
         if (item.id === id) {
           item.liked = !item.liked;
         }
       }
-      return state.set('quotes', copiedQuotes);
+      return state.set('quotes', updatedQuotes);
     }
     default:
       return state;

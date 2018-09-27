@@ -1,34 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-
-import injectReducer from 'utils/injectReducer';
 
 import Item from './Item';
 import Wrapper from './Wrapper';
+import Liked from './Liked';
 
 import { changeLiked } from './actions';
-import reducer from './reducer';
 
-export const Quote = ({ id, quote, liked, toggleLiked }) => {
-  console.log(liked);
-  return (
-    <Wrapper>
-      <Item onClick={() => toggleLiked(id)}>{quote}</Item>
-    </Wrapper>
-  );
+export const Quote = ({ id, quote, liked, toggleLiked }) => (
+  <Wrapper>
+    <Item onClick={() => toggleLiked(id)} liked={liked}>
+      {quote}
+      {liked && <Liked>Liked!</Liked>}
+    </Item>
+  </Wrapper>
+);
+
+Quote.propTypes = {
+  id: PropTypes.number,
+  quote: PropTypes.string,
+  liked: PropTypes.bool,
+  toggleLiked: PropTypes.func,
 };
 
 const mapDispatchToProps = dispatch => ({
   toggleLiked: id => dispatch(changeLiked(id)),
 });
-
-// const withConnect = connect(
-//   null,
-//   mapDispatchToProps,
-// );
 
 export default connect(
   null,
