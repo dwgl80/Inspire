@@ -14,4 +14,8 @@ export default defineMessages({
     id: 'HomePage.input',
     defaultMessage: 'Compose: ',
   },
+  save: {
+    id: 'HomePage.save',
+    defaultMessage: 'Your quote is being saved!',
+  },
 });

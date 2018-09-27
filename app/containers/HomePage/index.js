@@ -40,12 +40,12 @@ import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
-  componentDidMount() {
-    axios
-      .get('/saved/quotes/')
-      .then(res => console.log('response from client', res))
-      .catch(err => console.log('error in client', err));
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get('/saved/quotes/')
+  //     .then(res => console.log('response from client', res))
+  //     .catch(err => console.log('error in client', err));
+  // }
 
   render() {
     const {
@@ -55,12 +55,13 @@ export class HomePage extends React.PureComponent {
       saving,
       error,
     } = this.props;
-    const { title, input } = messages;
+    const { title, input, save } = messages;
     if (error) {
       return <ErrorPage />;
     }
     return (
       <Section>
+        {saving && <FormattedMessage {...save} />}
         <h3>
           <FormattedMessage {...title} />
         </h3>
