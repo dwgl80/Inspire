@@ -6,9 +6,10 @@ import {
   SAVE_QUOTE,
   SAVE_QUOTE_SUCCESS,
   SAVE_QUOTE_FAILURE,
+  CHANGE_LIKED,
 } from './constants';
 
-const initialState = fromJS({
+export const initialState = fromJS({
   fetching: false,
   saving: false,
   quotes: [],
@@ -41,6 +42,17 @@ const appReducer = (state = initialState, action) => {
     }
     case SAVE_QUOTE_FAILURE:
       return state.set('saving', false).set('error', action.error);
+    case CHANGE_LIKED: {
+      const quotes = state.get('quotes');
+      const copiedQuotes = quotes.slice();
+      const id = action.id;
+      for (const item of copiedQuotes) {
+        if (item.id === id) {
+          item.liked = !item.liked;
+        }
+      }
+      return state.set('quotes', copiedQuotes);
+    }
     default:
       return state;
   }
