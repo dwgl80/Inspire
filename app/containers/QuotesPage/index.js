@@ -7,11 +7,7 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import {
-  makeSelectFetching,
-  makeSelectQuotes,
-  makeSelectError,
-} from 'containers/App/selectors';
+import { makeSelectFetching, makeSelectError } from 'containers/App/selectors';
 
 import QuotesPageList from 'containers/QuotesPageList';
 import LinkButton from 'components/LinkButton';
@@ -28,7 +24,7 @@ export class QuotesPage extends React.PureComponent {
   }
 
   render() {
-    const { quotes, error } = this.props;
+    const { error } = this.props;
     const { link } = messages;
     if (error) {
       return <ErrorPage />;
@@ -46,7 +42,6 @@ export class QuotesPage extends React.PureComponent {
 
 QuotesPage.propTypes = {
   fetchAllQuotes: PropTypes.func,
-  quotes: PropTypes.array,
   error: PropTypes.bool,
 };
 
@@ -56,7 +51,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = createStructuredSelector({
   fetching: makeSelectFetching,
-  quotes: makeSelectQuotes,
   error: makeSelectError,
 });
 

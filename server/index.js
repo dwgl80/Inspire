@@ -31,7 +31,7 @@ app.post('/saved/quotes', (req, res) => {
 app.get('/saved/quotes/', (req, res) => {
   getQuotes((result, err) => {
     if (err) console.log(err);
-    const data = result.rows.map(item => item.quote);
+    const data = result.rows;
     res.status(200).send(data);
   });
 });

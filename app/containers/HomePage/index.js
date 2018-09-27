@@ -80,8 +80,8 @@ export class HomePage extends React.PureComponent {
 
 HomePage.propTypes = {
   saving: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  recentlySaved: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  error: PropTypes.bool,
+  recentlySaved: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   handleFormSubmit: PropTypes.func,
   onInputChange: PropTypes.func,
 };
