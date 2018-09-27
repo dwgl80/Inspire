@@ -26,6 +26,7 @@ import {
 } from 'containers/App/selectors';
 
 import HomePageList from 'components/HomePageList';
+import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 import Section from './styled-components/Section';
 import Form from './styled-components/Form';
@@ -52,9 +53,12 @@ export class HomePage extends React.PureComponent {
       onInputChange,
       recentlySaved,
       saving,
+      error,
     } = this.props;
-    console.log(recentlySaved);
     const { title, input } = messages;
+    if (error) {
+      return <ErrorPage />;
+    }
     return (
       <Section>
         <h3>
@@ -95,9 +99,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  saving: makeSelectSaving(),
-  recentlySaved: makeSelectRecentlySaved(),
-  error: makeSelectError(),
+  saving: makeSelectSaving,
+  recentlySaved: makeSelectRecentlySaved,
+  error: makeSelectError,
 });
 
 const withConnect = connect(

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import messages from './messages.js';
-import H1 from './H1.js';
-import H2 from './H2.js';
+import messages from './messages';
+import H1 from './H1';
+import H2 from './H2';
 
 const Header = () => {
   const { header, title } = messages;
