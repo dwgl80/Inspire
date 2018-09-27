@@ -12,7 +12,7 @@ const HomePageList = ({ quotes }) => (
 );
 
 HomePageList.propTypes = {
-  quotes: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  quotes: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default HomePageList;

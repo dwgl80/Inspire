@@ -46,7 +46,7 @@ const appReducer = (state = initialState, action) => {
       const quotes = state.get('quotes');
       const updatedQuotes = quotes.slice();
       const id = action.id;
-      for (const item of copiedQuotes) {
+      for (const item of updatedQuotes) {
         if (item.id === id) {
           item.liked = !item.liked;
         }

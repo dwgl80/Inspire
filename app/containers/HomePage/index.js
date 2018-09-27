@@ -1,14 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -38,45 +27,42 @@ import { inputQuote } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
-/* eslint-disable react/prefer-stateless-function */
-export class HomePage extends React.PureComponent {
-  render() {
-    const {
-      handleFormSubmit,
-      onInputChange,
-      recentlySaved,
-      saving,
-      error,
-    } = this.props;
-    const { title, input, save, link } = messages;
-    if (error) {
-      return <ErrorPage />;
-    }
-    return (
-      <Section>
-        {saving && <FormattedMessage {...save} />}
-        <h3>
-          <FormattedMessage {...title} />
-        </h3>
-        <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
-          <Label for="quote">
-            <FormattedMessage {...input} />
-            <Input
-              type="text"
-              name="quote"
-              placeholder="Type Quote Here..."
-              onChange={onInputChange}
-            />
-          </Label>
-          <HomePageList quotes={recentlySaved} />
-        </Form>
-        <LinkButton to="/quotes">
-          <FormattedMessage {...link} />
-        </LinkButton>
-      </Section>
-    );
+export const HomePage = props => {
+  const {
+    handleFormSubmit,
+    onInputChange,
+    recentlySaved,
+    saving,
+    error,
+  } = props;
+  const { title, input, save, link } = messages;
+  if (error) {
+    return <ErrorPage />;
   }
-}
+  return (
+    <Section>
+      {saving && <FormattedMessage {...save} />}
+      <h3>
+        <FormattedMessage {...title} />
+      </h3>
+      <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
+        <Label for="quote">
+          <FormattedMessage {...input} />
+          <Input
+            type="text"
+            name="quote"
+            placeholder="Type Quote Here..."
+            onChange={onInputChange}
+          />
+        </Label>
+        <HomePageList quotes={recentlySaved} />
+      </Form>
+      <LinkButton to="/quotes">
+        <FormattedMessage {...link} />
+      </LinkButton>
+    </Section>
+  );
+};
 
 HomePage.propTypes = {
   saving: PropTypes.bool,
