@@ -4,7 +4,7 @@ import { GET_QUOTES } from '../App/constants';
 
 import { quotesRetrieved, quotesFailed } from '../App/actions';
 
-export function* allQuotes() {
+export default function* allQuotes() {
   yield takeLatest(GET_QUOTES, getAllQuotes);
 }
 
