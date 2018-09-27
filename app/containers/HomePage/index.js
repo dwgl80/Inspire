@@ -26,6 +26,7 @@ import {
 } from 'containers/App/selectors';
 
 import HomePageList from 'components/HomePageList';
+import LinkButton from 'components/LinkButton/';
 import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 import Section from './styled-components/Section';
@@ -55,7 +56,7 @@ export class HomePage extends React.PureComponent {
       saving,
       error,
     } = this.props;
-    const { title, input, save } = messages;
+    const { title, input, save, link } = messages;
     if (error) {
       return <ErrorPage />;
     }
@@ -77,6 +78,9 @@ export class HomePage extends React.PureComponent {
           </Label>
           <HomePageList quotes={recentlySaved} />
         </Form>
+        <LinkButton to="/quotes">
+          <FormattedMessage {...link} />
+        </LinkButton>
       </Section>
     );
   }

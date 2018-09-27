@@ -19,16 +19,17 @@ import QuotesPage from 'containers/QuotesPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import Header from 'components/Header';
+import Wrapper from './Wrapper';
 
 const App = () => (
-  <div>
+  <Wrapper>
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/quotes" component={QuotesPage} />
+      <Route path="/quotes" component={QuotesPage} />
       <Route path="/error" component={NotFoundPage} />
     </Switch>
-  </div>
+  </Wrapper>
 );
 
 export default App;

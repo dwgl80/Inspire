@@ -18,4 +18,8 @@ export default defineMessages({
     id: 'HomePage.save',
     defaultMessage: 'Your quote is being saved!',
   },
+  link: {
+    id: 'HomePage.link',
+    defaultMessage: 'Feeling Quotey?',
+  },
 });

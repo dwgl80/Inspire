@@ -7,7 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 
-export class QuotesPage extends React.PureComponent {
+export default class QuotesPage extends React.PureComponent {
   componentDidMount() {}
 
   render() {

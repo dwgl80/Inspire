@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   box-shadow: 15px 10px 15px 8px LightBlue;
   margin: 0 auto;
   margin-top: 50px;
+  background-color: white;
 `;
 
 export default Wrapper;
