@@ -13,7 +13,9 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 
-import LinkButton from 'components/LinkButton/';
+import QuotesPageList from 'containers/QuotesPageList';
+import LinkButton from 'components/LinkButton';
+import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 
 import { getQuotes } from 'containers/App/actions';
@@ -26,11 +28,14 @@ export class QuotesPage extends React.PureComponent {
   }
 
   render() {
-    const { quotes } = this.props;
-    console.log(quotes);
+    const { quotes, error } = this.props;
     const { link } = messages;
+    if (error) {
+      return <ErrorPage />;
+    }
     return (
       <div>
+        <QuotesPageList />
         <LinkButton to="/">
           <FormattedMessage {...link} />
         </LinkButton>
@@ -46,10 +51,7 @@ QuotesPage.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllQuotes: () => {
-    dispatch(getQuotes());
-    console.log('fetched');
-  },
+  fetchAllQuotes: () => dispatch(getQuotes()),
 });
 
 const mapStateToProps = createStructuredSelector({

@@ -15,7 +15,6 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import axios from 'axios';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -41,13 +40,6 @@ import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
-  // componentDidMount() {
-  //   axios
-  //     .get('/saved/quotes/')
-  //     .then(res => console.log('response from client', res))
-  //     .catch(err => console.log('error in client', err));
-  // }
-
   render() {
     const {
       handleFormSubmit,
