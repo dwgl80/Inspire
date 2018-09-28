@@ -13,7 +13,7 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 
-import HomePageList from 'components/HomePageList';
+import HomePageList from 'containers/HomePageList';
 import LinkButton from 'components/LinkButton/';
 import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
@@ -55,7 +55,7 @@ export const HomePage = props => {
             onChange={onInputChange}
           />
         </Label>
-        <HomePageList quotes={recentlySaved} />
+        <HomePageList />
       </Form>
       <LinkButton to="/quotes">
         <FormattedMessage {...link} />
