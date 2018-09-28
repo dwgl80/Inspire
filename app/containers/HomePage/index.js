@@ -14,13 +14,14 @@ import {
 } from 'containers/App/selectors';
 
 import HomePageList from 'containers/HomePageList';
+import InputBar from 'components/InputBar';
 import LinkButton from 'components/LinkButton/';
 import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 import Section from './styled-components/Section';
-import Form from './styled-components/Form';
-import Label from './styled-components/Label';
-import Input from './styled-components/Input';
+// import Form from '../../components/InputBar/Form';
+// import Label from '../../components/InputBar/Label';
+// import Input from '../../components/InputBar/Input';
 
 import { saveQuote } from 'containers/App/actions';
 import { inputQuote } from './actions';
@@ -28,13 +29,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 export const HomePage = props => {
-  const {
-    handleFormSubmit,
-    onInputChange,
-    recentlySaved,
-    saving,
-    error,
-  } = props;
+  const { handleFormSubmit, onInputChange, saving, error } = props;
   const { title, input, save, link } = messages;
   if (error) {
     return <ErrorPage />;
@@ -45,18 +40,12 @@ export const HomePage = props => {
       <h3>
         <FormattedMessage {...title} />
       </h3>
-      <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
-        <Label for="quote">
-          <FormattedMessage {...input} />
-          <Input
-            type="text"
-            name="quote"
-            placeholder="Type Quote Here..."
-            onChange={onInputChange}
-          />
-        </Label>
-        <HomePageList />
-      </Form>
+      <InputBar
+        handleFormSubmit={handleFormSubmit}
+        onInputChange={onInputChange}
+        input={input}
+      />
+      <HomePageList />
       <LinkButton to="/quotes">
         <FormattedMessage {...link} />
       </LinkButton>
