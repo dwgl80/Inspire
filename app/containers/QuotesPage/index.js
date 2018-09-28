@@ -10,6 +10,7 @@ import injectSaga from 'utils/injectSaga';
 import { makeSelectFetching, makeSelectError } from 'containers/App/selectors';
 
 import QuotesPageList from 'containers/QuotesPageList';
+import InputBar from 'components/InputBar';
 import LinkButton from 'components/LinkButton';
 import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
@@ -25,12 +26,13 @@ export class QuotesPage extends React.PureComponent {
 
   render() {
     const { error } = this.props;
-    const { link } = messages;
+    const { link, input } = messages;
     if (error) {
       return <ErrorPage />;
     }
     return (
       <div>
+        <InputBar input={input} />
         <QuotesPageList />
         <LinkButton to="/">
           <FormattedMessage {...link} />

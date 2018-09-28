@@ -5,4 +5,8 @@ export default defineMessages({
     id: 'QuotesPage.title',
     defaultMessage: 'Let Us Compose!',
   },
+  input: {
+    id: 'QuotesPage.title',
+    defaultMessage: 'Seek: ',
+  },
 });

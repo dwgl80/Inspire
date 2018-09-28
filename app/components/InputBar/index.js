@@ -2,22 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import Section from './Section';
 import Form from './Form';
 import Input from './Input';
 import Label from './Label';
 
 const InputBar = ({ handleFormSubmit, onInputChange, input }) => (
-  <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
-    <Label for="quote">
-      <FormattedMessage {...input} />
-      <Input
-        type="text"
-        name="quote"
-        placeholder="Type Quote Here..."
-        onChange={onInputChange}
-      />
-    </Label>
-  </Form>
+  <Section>
+    <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
+      <Label for="quote">
+        <FormattedMessage {...input} />
+        <Input
+          type="text"
+          name="quote"
+          placeholder="Type Quote Here..."
+          onChange={onInputChange}
+        />
+      </Label>
+    </Form>
+  </Section>
 );
 
 InputBar.propTypes = {

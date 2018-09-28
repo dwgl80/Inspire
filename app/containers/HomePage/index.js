@@ -18,10 +18,7 @@ import InputBar from 'components/InputBar';
 import LinkButton from 'components/LinkButton/';
 import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
-import Section from './styled-components/Section';
-// import Form from '../../components/InputBar/Form';
-// import Label from '../../components/InputBar/Label';
-// import Input from '../../components/InputBar/Input';
+import Section from '../../components/InputBar/Section';
 
 import { saveQuote } from 'containers/App/actions';
 import { inputQuote } from './actions';
