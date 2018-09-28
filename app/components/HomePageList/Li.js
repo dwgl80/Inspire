@@ -5,6 +5,12 @@ const Li = styled.li`
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 5px;
+  color: SkyBlue;
+
+  &:hover {
+    background-color: SkyBlue;
+    color: white;
+  }
 `;
 
 export default Li;

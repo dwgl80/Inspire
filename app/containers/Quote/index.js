@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Item from './Item';
-import Wrapper from './Wrapper';
-import Liked from './Liked';
+import Item from './styled-components/Item';
+import Wrapper from './styled-components/Wrapper';
+import Liked from './styled-components/Liked';
 
 import { changeLiked } from './actions';
 
