@@ -15,6 +15,7 @@ export const initialState = fromJS({
   quotes: [],
   error: false,
   recentlySaved: [],
+  searchedQuotes: [],
 });
 
 const appReducer = (state = initialState, action) => {

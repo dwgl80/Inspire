@@ -21,7 +21,8 @@ import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 
 import { getQuotes } from 'containers/App/actions';
-// import reducer from './reducer';
+import { inputSearch } from './actions';
+import reducer from './reducer';
 import saga from './saga';
 
 export class QuotesPage extends React.PureComponent {
@@ -31,6 +32,8 @@ export class QuotesPage extends React.PureComponent {
 
   render() {
     const {
+      handleSearchSubmit,
+      handleSearchTerm,
       error,
       location: { pathname },
       fetching,
@@ -44,7 +47,11 @@ export class QuotesPage extends React.PureComponent {
     return (
       <div>
         <Header path={pathname} />
-        <InputBar input={input} />
+        <InputBar
+          handleFormSubmit={handleSearchSubmit}
+          onInputChange={handleSearchTerm}
+          input={input}
+        />
         <QuotesPageList />
         <LinkButton to="/" path={pathname}>
           <FormattedMessage {...link} />
@@ -56,6 +63,8 @@ export class QuotesPage extends React.PureComponent {
 
 QuotesPage.propTypes = {
   fetchAllQuotes: PropTypes.func,
+  handleSearchSubmit: PropTypes.func,
+  handleSearchTerm: PropTypes.func,
   error: PropTypes.bool,
   location: PropTypes.object,
   pathname: PropTypes.string,
@@ -64,6 +73,12 @@ QuotesPage.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   fetchAllQuotes: () => dispatch(getQuotes()),
+  handleSearchSubmit: event => {
+    event.preventDefault();
+    event.target.reset();
+    // dispatch(searchQuotes());
+  },
+  handleSearchTerm: event => dispatch(inputSearch(event.target.value)),
 });
 
 const mapStateToProps = createStructuredSelector({
@@ -77,11 +92,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-// const withReducer = injectReducer({ key: 'QuotesPage', reducer });
+const withReducer = injectReducer({ key: 'QuotesPage', reducer });
 const withSaga = injectSaga({ key: 'QuotesPage', saga });
 
 export default compose(
-  // withReducer,
+  withReducer,
   withSaga,
   withConnect,
 )(QuotesPage);
