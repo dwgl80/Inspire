@@ -11,9 +11,12 @@ import {
   makeSelectSaving,
   makeSelectRecentlySaved,
   makeSelectError,
+  makeSelectLocation,
 } from 'containers/App/selectors';
 
 import HomePageList from 'containers/HomePageList';
+import Header from 'components/Header';
+
 import InputBar from 'components/InputBar';
 import LinkButton from 'components/LinkButton/';
 import ErrorPage from 'components/ErrorPage';
@@ -26,13 +29,20 @@ import reducer from './reducer';
 import saga from './saga';
 
 export const HomePage = props => {
-  const { handleFormSubmit, onInputChange, saving, error } = props;
+  const {
+    handleFormSubmit,
+    onInputChange,
+    saving,
+    error,
+    location: { pathname },
+  } = props;
   const { title, input, save, link } = messages;
   if (error) {
     return <ErrorPage />;
   }
   return (
     <Section>
+      <Header path={pathname} />
       {saving && <FormattedMessage {...save} />}
       <h3>
         <FormattedMessage {...title} />
@@ -43,7 +53,7 @@ export const HomePage = props => {
         input={input}
       />
       <HomePageList />
-      <LinkButton to="/quotes">
+      <LinkButton to="/quotes" path={pathname}>
         <FormattedMessage {...link} />
       </LinkButton>
     </Section>
@@ -51,11 +61,13 @@ export const HomePage = props => {
 };
 
 HomePage.propTypes = {
-  saving: PropTypes.bool,
-  error: PropTypes.bool,
-  recentlySaved: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   handleFormSubmit: PropTypes.func,
   onInputChange: PropTypes.func,
+  saving: PropTypes.bool,
+  error: PropTypes.bool,
+  location: PropTypes.object,
+  pathname: PropTypes.string,
+  recentlySaved: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -68,6 +80,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
+  location: makeSelectLocation,
   saving: makeSelectSaving,
   recentlySaved: makeSelectRecentlySaved,
   error: makeSelectError,

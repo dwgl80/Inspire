@@ -18,12 +18,10 @@ import HomePage from 'containers/HomePage/Loadable';
 import QuotesPage from 'containers/QuotesPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-import Header from 'components/Header';
 import Wrapper from './Wrapper';
 
 const App = () => (
   <Wrapper>
-    <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/quotes" component={QuotesPage} />

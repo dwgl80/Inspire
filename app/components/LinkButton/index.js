@@ -13,11 +13,12 @@ const LinkButton = styled(Link)`
   font-family: URW Chancery L, cursive;
   font-weight: bold;
   font-size: 16px;
-  border: 2px solid #41addd;
-  color: #41addd;
+  border: ${props =>
+    props.path === '/' ? '2px solid SkyBlue' : '2px solid pink'};
+  color: ${props => (props.path === '/' ? 'SkyBlue' : 'pink')};
 
   &:hover {
-    background: #41addd;
+    background: ${props => (props.path === '/' ? 'SkyBlue' : 'pink')};
     color: #fff;
   }
 `;
