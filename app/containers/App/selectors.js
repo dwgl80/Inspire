@@ -3,41 +3,41 @@ import { createSelector } from 'reselect';
 const selectRoute = state => state.get('route');
 const selectGlobal = state => state.get('global');
 
-const makeSelectLocation = createSelector(selectRoute, routeState =>
+const selectLocation = createSelector(selectRoute, routeState =>
   routeState.get('location').toJS(),
 );
 
-const makeSelectFetching = createSelector(selectGlobal, globalState =>
+const selectFetching = createSelector(selectGlobal, globalState =>
   globalState.get('fetching'),
 );
 
-const makeSelectSaving = createSelector(selectGlobal, globalState =>
+const selectSaving = createSelector(selectGlobal, globalState =>
   globalState.get('saving'),
 );
 
-const makeSelectQuotes = createSelector(selectGlobal, globalState =>
+const selectQuotes = createSelector(selectGlobal, globalState =>
   globalState.get('quotes'),
 );
 
-const makeSelectError = createSelector(selectGlobal, globalState =>
+const selectError = createSelector(selectGlobal, globalState =>
   globalState.get('error'),
 );
 
-const makeSelectRecentlySaved = createSelector(selectGlobal, globalState =>
+const selectRecentlySaved = createSelector(selectGlobal, globalState =>
   globalState.get('recentlySaved'),
 );
 
-const makeSelectSearchedQuotes = createSelector(selectGlobal, globalState =>
+const selectSearchedQuotes = createSelector(selectGlobal, globalState =>
   globalState.get('searchedQuotes'),
 );
 
 export {
   selectGlobal,
-  makeSelectLocation,
-  makeSelectFetching,
-  makeSelectSaving,
-  makeSelectQuotes,
-  makeSelectError,
-  makeSelectRecentlySaved,
-  makeSelectSearchedQuotes,
+  selectLocation,
+  selectFetching,
+  selectSaving,
+  selectQuotes,
+  selectError,
+  selectRecentlySaved,
+  selectSearchedQuotes,
 };

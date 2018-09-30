@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SAVE_QUOTE } from '../App/constants';
 import { saveSuccess, saveFailed } from '../App/actions';
 
-import { makeSelectQuote } from './selector';
+import { selectQuote } from './selector';
 
 export default function* saveAllQuotes() {
   yield takeEvery(SAVE_QUOTE, saveQuotes);
@@ -13,7 +13,7 @@ const postQuotes = (url, param) => axios.post(url, param);
 
 export function* saveQuotes() {
   const url = '/saved/quotes';
-  const quote = yield select(makeSelectQuote);
+  const quote = yield select(selectQuote);
   const param = { quote };
   try {
     const response = yield call(postQuotes, url, param);

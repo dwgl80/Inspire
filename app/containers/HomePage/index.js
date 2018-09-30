@@ -8,10 +8,10 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectSaving,
-  makeSelectRecentlySaved,
-  makeSelectError,
-  makeSelectLocation,
+  selectSaving,
+  selectRecentlySaved,
+  selectError,
+  selectLocation,
 } from 'containers/App/selectors';
 
 import HomePageList from 'containers/HomePageList';
@@ -80,10 +80,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  location: makeSelectLocation,
-  saving: makeSelectSaving,
-  recentlySaved: makeSelectRecentlySaved,
-  error: makeSelectError,
+  location: selectLocation,
+  saving: selectSaving,
+  recentlySaved: selectRecentlySaved,
+  error: selectError,
 });
 
 const withConnect = connect(

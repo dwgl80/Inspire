@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
-import {
-  makeSelectQuotes,
-  makeSelectSearchedQuotes,
-} from 'containers/App/selectors';
+import { selectQuotes, selectSearchedQuotes } from 'containers/App/selectors';
 
 import Quote from 'containers/Quote';
 import Wrapper from './Wrapper';
@@ -34,8 +30,8 @@ QuotesPageList.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  quotes: makeSelectQuotes,
-  searchedQuotes: makeSelectSearchedQuotes,
+  quotes: selectQuotes,
+  searchedQuotes: selectSearchedQuotes,
 });
 
 export default connect(

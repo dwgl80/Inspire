@@ -31,6 +31,7 @@ InputBar.propTypes = {
   handleFormSubmit: PropTypes.func,
   onInputChange: PropTypes.func,
   input: PropTypes.object,
+  query: PropTypes.string,
 };
 
 export default InputBar;

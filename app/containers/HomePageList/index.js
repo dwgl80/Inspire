@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectRecentlySaved } from 'containers/App/selectors';
+import { selectRecentlySaved } from 'containers/App/selectors';
 
 import Li from './styled-components/Li';
 import UL from './styled-components/UL';
@@ -20,7 +20,7 @@ HomePageList.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  quotes: makeSelectRecentlySaved,
+  quotes: selectRecentlySaved,
 });
 
 export default connect(

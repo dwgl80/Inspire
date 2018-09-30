@@ -1,12 +1,5 @@
-import { fromJS } from 'immutable';
-
-import { makeSelectQuotes } from 'containers/App/selectors';
-import { CHANGE_LIKED } from './constants';
 import initialState from 'containers/App/reducer';
-
-// export const initialState = fromJS({
-//   quotes: [],
-// });
+import { CHANGE_LIKED } from './constants';
 
 const quoteReducer = (state = initialState, action) => {
   switch (action.type) {

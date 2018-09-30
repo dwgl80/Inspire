@@ -8,9 +8,9 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectFetching,
-  makeSelectError,
-  makeSelectLocation,
+  selectFetching,
+  selectError,
+  selectLocation,
 } from 'containers/App/selectors';
 
 import QuotesPageList from 'containers/QuotesPageList';
@@ -21,7 +21,7 @@ import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 
 import { getQuotes, searchQuotes } from 'containers/App/actions';
-import { makeSelectQuery } from './selector';
+import { selectQuery } from './selector';
 import { inputSearch } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -72,6 +72,7 @@ QuotesPage.propTypes = {
   location: PropTypes.object,
   pathname: PropTypes.string,
   fetching: PropTypes.bool,
+  query: PropTypes.string,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -85,10 +86,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  location: makeSelectLocation,
-  fetching: makeSelectFetching,
-  error: makeSelectError,
-  query: makeSelectQuery,
+  location: selectLocation,
+  fetching: selectFetching,
+  error: selectError,
+  query: selectQuery,
 });
 
 const withConnect = connect(

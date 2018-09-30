@@ -3,8 +3,8 @@ import { initialState } from './reducer';
 
 const selectQuotes = state => state.get('QuotesPage', initialState);
 
-const makeSelectQuery = createSelector(selectQuotes, quotesState =>
+const selectQuery = createSelector(selectQuotes, quotesState =>
   quotesState.get('query'),
 );
 
-export { selectQuotes, makeSelectQuery };
+export { selectQuotes, selectQuery };
