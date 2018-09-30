@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-
 import { INPUT_SEARCH } from './constants';
 
 export const initialState = fromJS({

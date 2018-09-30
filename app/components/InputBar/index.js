@@ -7,9 +7,13 @@ import Form from './Form';
 import Input from './Input';
 import Label from './Label';
 
-const InputBar = ({ handleFormSubmit, onInputChange, input }) => (
+const InputBar = ({ handleFormSubmit, onInputChange, input, query }) => (
   <Section>
-    <Form action="/saved/quotes" method="post" onSubmit={handleFormSubmit}>
+    <Form
+      action="/saved/quotes"
+      method="post"
+      onSubmit={event => handleFormSubmit(event, query)}
+    >
       <Label for="quote">
         <FormattedMessage {...input} />
         <Input

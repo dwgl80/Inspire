@@ -27,6 +27,10 @@ const makeSelectRecentlySaved = createSelector(selectGlobal, globalState =>
   globalState.get('recentlySaved'),
 );
 
+const makeSelectSearchedQuotes = createSelector(selectGlobal, globalState =>
+  globalState.get('searchedQuotes'),
+);
+
 export {
   selectGlobal,
   makeSelectLocation,
@@ -35,4 +39,5 @@ export {
   makeSelectQuotes,
   makeSelectError,
   makeSelectRecentlySaved,
+  makeSelectSearchedQuotes,
 };

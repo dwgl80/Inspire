@@ -5,6 +5,7 @@ import {
   SAVE_QUOTE,
   SAVE_QUOTE_SUCCESS,
   SAVE_QUOTE_FAILURE,
+  SEARCH_QUOTES,
 } from './constants';
 
 const saveQuote = () => ({
@@ -35,6 +36,11 @@ const quotesFailed = error => ({
   error,
 });
 
+const searchQuotes = query => ({
+  type: SEARCH_QUOTES,
+  query,
+});
+
 export {
   getQuotes,
   quotesRetrieved,
@@ -42,4 +48,5 @@ export {
   saveQuote,
   saveSuccess,
   saveFailed,
+  searchQuotes,
 };

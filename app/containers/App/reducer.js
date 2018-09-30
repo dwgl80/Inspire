@@ -7,6 +7,7 @@ import {
   SAVE_QUOTE_SUCCESS,
   SAVE_QUOTE_FAILURE,
   CHANGE_LIKED,
+  SEARCH_QUOTES,
 } from './constants';
 
 export const initialState = fromJS({
@@ -53,6 +54,19 @@ const appReducer = (state = initialState, action) => {
         }
       }
       return state.set('quotes', updatedQuotes);
+    }
+    case SEARCH_QUOTES: {
+      const quotes = state.get('quotes');
+      if (action.query.toLowerCase() === 'show all results') {
+        return state.set('searchedQuotes', []);
+      }
+      const searchedQuotes = quotes.filter(item =>
+        item.quote.toLowerCase().includes(action.query.toLowerCase()),
+      );
+      if (!searchedQuotes.length) {
+        searchedQuotes.push({ id: null, quote: 'No results found' });
+      }
+      return state.set('searchedQuotes', searchedQuotes);
     }
     default:
       return state;

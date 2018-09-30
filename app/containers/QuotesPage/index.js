@@ -20,7 +20,8 @@ import LinkButton from 'components/LinkButton';
 import ErrorPage from 'components/ErrorPage';
 import messages from './messages';
 
-import { getQuotes } from 'containers/App/actions';
+import { getQuotes, searchQuotes } from 'containers/App/actions';
+import { makeSelectQuery } from './selector';
 import { inputSearch } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -37,6 +38,7 @@ export class QuotesPage extends React.PureComponent {
       error,
       location: { pathname },
       fetching,
+      query,
     } = this.props;
     const { link, input } = messages;
     if (error) {
@@ -51,6 +53,7 @@ export class QuotesPage extends React.PureComponent {
           handleFormSubmit={handleSearchSubmit}
           onInputChange={handleSearchTerm}
           input={input}
+          query={query}
         />
         <QuotesPageList />
         <LinkButton to="/" path={pathname}>
@@ -73,10 +76,10 @@ QuotesPage.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   fetchAllQuotes: () => dispatch(getQuotes()),
-  handleSearchSubmit: event => {
+  handleSearchSubmit: (event, query) => {
     event.preventDefault();
     event.target.reset();
-    // dispatch(searchQuotes());
+    dispatch(searchQuotes(query));
   },
   handleSearchTerm: event => dispatch(inputSearch(event.target.value)),
 });
@@ -85,6 +88,7 @@ const mapStateToProps = createStructuredSelector({
   location: makeSelectLocation,
   fetching: makeSelectFetching,
   error: makeSelectError,
+  query: makeSelectQuery,
 });
 
 const withConnect = connect(
