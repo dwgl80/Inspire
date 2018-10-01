@@ -70,7 +70,7 @@ HomePage.propTypes = {
   recentlySaved: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleFormSubmit: event => {
     event.preventDefault();
     event.target.reset();
