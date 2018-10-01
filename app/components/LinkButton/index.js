@@ -14,11 +14,11 @@ const LinkButton = styled(Link)`
   font-weight: bold;
   font-size: 16px;
   border: ${props =>
-    props.path === '/' ? '2px solid SkyBlue' : '2px solid pink'};
-  color: ${props => (props.path === '/' ? 'SkyBlue' : 'pink')};
+    props.path === '/' ? '2px solid SkyBlue' : '2px solid PaleVioletRed'};
+  color: ${props => (props.path === '/' ? 'SkyBlue' : 'PaleVioletRed')};
 
   &:hover {
-    background: ${props => (props.path === '/' ? 'SkyBlue' : 'pink')};
+    background: ${props => (props.path === '/' ? 'SkyBlue' : 'PaleVioletRed')};
     color: #fff;
   }
 `;

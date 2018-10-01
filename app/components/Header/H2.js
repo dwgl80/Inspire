@@ -6,7 +6,7 @@ const H2 = styled.h2`
   font-family: URW Chancery L, cursive;
   margin-top: -25px;
   margin-bottom: 60px;
-  color: ${props => (props.path === '/' ? 'SkyBlue' : 'pink')};
+  color: ${props => (props.path === '/' ? 'SkyBlue' : 'PaleVioletRed')};
 `;
 
 export default H2;

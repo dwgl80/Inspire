@@ -19,7 +19,7 @@ import Header from 'components/Header';
 
 import InputBar from 'components/InputBar';
 import LinkButton from 'components/LinkButton/';
-import ErrorPage from 'components/ErrorPage';
+import ErrorMessage from 'components/ErrorMessage';
 import messages from './messages';
 import Section from '../../components/InputBar/Section';
 
@@ -36,10 +36,7 @@ export const HomePage = props => {
     error,
     location: { pathname },
   } = props;
-  const { title, input, save, link } = messages;
-  if (error) {
-    return <ErrorPage />;
-  }
+  const { title, input, save, link, invalid } = messages;
   return (
     <Section>
       <Header path={pathname} />
@@ -47,6 +44,7 @@ export const HomePage = props => {
       <h3>
         <FormattedMessage {...title} />
       </h3>
+      {error && <ErrorMessage message={invalid} />}
       <InputBar
         handleFormSubmit={handleFormSubmit}
         onInputChange={onInputChange}
@@ -75,6 +73,7 @@ export const mapDispatchToProps = dispatch => ({
     event.preventDefault();
     event.target.reset();
     dispatch(saveQuote());
+    dispatch(inputQuote(''));
   },
   onInputChange: event => dispatch(inputQuote(event.target.value)),
 });

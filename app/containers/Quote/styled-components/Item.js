@@ -7,7 +7,7 @@ const Item = styled.div`
   height: 100%;
   align-items: center;
   margin-left: 30px;
-  color: ${props => (props.liked ? 'maroon' : 'pink')};
+  color: ${props => (props.liked ? 'maroon' : 'PaleVioletRed')};
   cursor: pointer;
   transition: font 0.5s ease;
 

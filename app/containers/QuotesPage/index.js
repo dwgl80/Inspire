@@ -17,7 +17,7 @@ import QuotesPageList from 'containers/QuotesPageList';
 import Header from 'components/Header';
 import InputBar from 'components/InputBar';
 import LinkButton from 'components/LinkButton';
-import ErrorPage from 'components/ErrorPage';
+import ErrorMessage from 'components/ErrorMessage';
 import messages from './messages';
 
 import { getQuotes, searchQuotes } from 'containers/App/actions';
@@ -40,9 +40,9 @@ export class QuotesPage extends React.PureComponent {
       fetching,
       query,
     } = this.props;
-    const { link, input } = messages;
+    const { link, input, unable } = messages;
     if (error) {
-      return <ErrorPage />;
+      return <ErrorMessage message={unable} />;
     } else if (fetching) {
       return <div>Retrieving data</div>;
     }

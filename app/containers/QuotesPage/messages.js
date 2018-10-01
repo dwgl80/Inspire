@@ -9,4 +9,8 @@ export default defineMessages({
     id: 'QuotesPage.title',
     defaultMessage: 'Seek: ',
   },
+  unable: {
+    id: 'QuotesPage.unable',
+    defaultMessage: 'Unable to give you words of encourgement at this time',
+  },
 });

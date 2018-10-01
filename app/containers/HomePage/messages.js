@@ -17,4 +17,8 @@ export default defineMessages({
     id: 'HomePage.link',
     defaultMessage: 'Feeling Quotey?',
   },
+  invalid: {
+    id: 'HomePage.invalid',
+    defaultMessage: 'Invalid input, try something more encourging!',
+  },
 });

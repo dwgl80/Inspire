@@ -16,9 +16,13 @@ export function* saveQuotes() {
   const quote = yield select(selectQuote);
   const param = { quote };
   try {
-    const response = yield call(postQuotes, url, param);
-    const recentQuote = param.quote;
-    yield put(saveSuccess(recentQuote));
+    if (!quote) {
+      yield put(saveFailed(true));
+    } else {
+      yield call(postQuotes, url, param);
+      const recentQuote = param.quote;
+      yield put(saveSuccess(recentQuote));
+    }
   } catch (err) {
     yield put(saveFailed(err));
   }

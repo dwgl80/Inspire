@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { shallow } from 'enzyme';
 
 import HomePageList from 'containers/HomePageList';
-import ErrorPage from 'components/ErrorPage';
+import ErrorMessage from 'components/ErrorMessage';
 import Header from 'components/Header';
 import { saveQuote } from 'containers/App/actions';
 import { inputQuote } from '../actions';
@@ -25,11 +25,11 @@ describe('<HomePage />', () => {
     );
     expect(renderedComponent.contains(<HomePageList />)).toEqual(true);
   });
-  it('should render ErrorPage component when an error occurs', () => {
+  it('should render ErrorMessage component when an error occurs', () => {
     const renderedComponent = shallow(
       <HomePage location={{ pathname: '/' }} error />,
     );
-    expect(renderedComponent.contains(<ErrorPage />)).toEqual(true);
+    expect(renderedComponent.contains(<ErrorMessage />)).toEqual(true);
   });
   it('should render Header component', () => {
     const renderedComponent = shallow(
