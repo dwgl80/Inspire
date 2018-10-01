@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`homePageReducer should properly handle inputQuote action 1`] = `
+Immutable.Map {
+  "quote": "Shoot for the moon and the stars",
+}
+`;
+
+exports[`homePageReducer should return initial state when actions to not match 1`] = `
+Immutable.Map {
+  "quote": "",
+}
+`;

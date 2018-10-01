@@ -1,8 +1,8 @@
 import { fromJS } from 'immutable';
 
-import { makeSelectLocation } from 'containers/App/selectors';
+import { selectLocation } from 'containers/App/selectors';
 
-describe('makeSelectLocation', () => {
+describe('selectLocation', () => {
   it('should select the location', () => {
     const route = fromJS({
       location: { pathname: '/foo' },
@@ -10,8 +10,6 @@ describe('makeSelectLocation', () => {
     const mockedState = fromJS({
       route,
     });
-    expect(makeSelectLocation()(mockedState)).toEqual(
-      route.get('location').toJS(),
-    );
+    expect(selectLocation(mockedState)).toEqual(route.get('location').toJS());
   });
 });

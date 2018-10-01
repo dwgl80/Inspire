@@ -1,5 +1,4 @@
 import { INPUT_QUOTE } from '../constants';
-
 import { inputQuote } from '../actions';
 
 describe('HomePage Actions', () => {
@@ -8,7 +7,7 @@ describe('HomePage Actions', () => {
       const quote = 'Shoot for the moon and the stars';
       const expectedResult = {
         type: INPUT_QUOTE,
-        name: quote,
+        quote,
       };
 
       expect(inputQuote(quote)).toEqual(expectedResult);

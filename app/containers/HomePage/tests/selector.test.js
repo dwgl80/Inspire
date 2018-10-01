@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
-
-import { selectHome, selectQuote } from '../selectors';
+import { selectHome, selectQuote } from '../selector';
 
 describe('selectHome', () => {
   it('should select the HomePage state', () => {
@@ -14,8 +13,8 @@ describe('selectHome', () => {
   });
 });
 
-describe('makeSelectUsername', () => {
-  it('should select the username', () => {
+describe('selectQuote', () => {
+  it('should select the proper quote state', () => {
     const quote = 'Shoot for the moon and the stars';
     const mockedState = fromJS({
       HomePage: {
