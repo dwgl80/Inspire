@@ -18,6 +18,8 @@ The application can be started up manually with react-boilerplate and a running 
 
   * npm run setup
   
+  * npm run build:dll
+  
   * npm start
 
 And the application will be hosted on localhost:3000.
