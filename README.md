@@ -3,7 +3,7 @@
 
 > A simple web application where users can share inspirational quotes
 
-Demo component @ 
+Link to site @http://ec2-52-14-53-144.us-east-2.compute.amazonaws.com:3000/ 
   
 ## Table of Contents
   1. [Usage](#Usage)
